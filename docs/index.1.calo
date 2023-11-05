@@ -1,0 +1,246 @@
+Ejecutable como documento HTML5
+    con autor allnulled
+    con nombre index
+    con versión 1
+<head>
+    <title>App | Inicio</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--link rel="stylesheet" type="text/css" href="lib/win7.scoped.2.css" /-->
+    <style>
+    html, body {
+        background-color: #111;
+        padding: 0;
+        margin: 0;
+    }
+    .win7 h5 {
+        background-color: #222;
+        color: white;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 10px;
+        border: 1px solid #CCC;
+        text-align: center;
+    }
+    .win7 .list {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+    .win7 .list > li {
+        display: inline-block;
+    }
+    .win7 .list_separator,
+    .win7 .list_item {
+        display: inline-block;
+        padding: 4px;
+        font-size: 10px;
+        margin-left: 1px;
+        margin-top: 1px;
+    }
+    .win7 .list_separator {
+        background-color: #222;
+        color: white;
+    }
+    .win7 .list_item {
+        display: inline-block;
+        padding: 4px;
+        font-size: 10px;
+        border: 1px solid #AAA;
+        margin-left: 2px;
+        margin-top: 2px;
+        cursor: pointer;
+    }
+    .win7 .list_item:hover {
+        background-color: #CCC;
+    }
+    .win7 .list.main_list > li > .list_item {
+        background-color: #5095d8;
+        color: black;
+    }
+    .win7 .list.main_list > li > .list_item.marcado {
+        background-color: #f6669a;
+    }
+    </style>
+</head>
+<body><div id="app"></div></body>.
+
+importo api nativa.
+
+creo PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plantilla {
+  <div class="PaginaDeInicio Component win7">
+    <h5>App | Inicio</h5>
+    <ul class="list main_list">
+        <li>
+            <button class="list_item" :class="{marcado:esta_mostrando_prensa}" v-on:click="() => esta_mostrando_prensa = !esta_mostrando_prensa">
+                Prensa general
+            </button>
+        </li>
+        <li>
+            <button class="list_item" :class="{marcado:esta_mostrando_prensa_cientifica}" v-on:click="() => esta_mostrando_prensa_cientifica = !esta_mostrando_prensa_cientifica">
+                Prensa científica
+            </button>
+        </li>
+        <li>
+            <button class="list_item" :class="{marcado:esta_mostrando_redes_sociales}" v-on:click="() => esta_mostrando_redes_sociales = !esta_mostrando_redes_sociales">
+                Redes sociales
+            </button>
+        </li>
+        <li>
+            <button class="list_item" v-on:click="() => abrir_enlace('https://www.tvguia.es/')">
+                Programación TV
+            </button>
+        </li>
+    </ul>
+    <div class="lista_de_prensa" v-if="esta_mostrando_prensa">
+        <h5>Prensa general</h5>
+        <ul class="list">
+            <li v-for="item, item_index in items_de_prensa" v-bind:key="'item-' + item_index">
+                <button class="list_item" v-on:click="() => abrir_enlace(item[1])" v-if="item.length === 2">
+                    {{ item[0] }}
+                </button>
+                <button class="list_separator" v-else-if="item.length === 1">
+                    {{ item[0] }}
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="lista_de_prensa_cientifica" v-if="esta_mostrando_prensa_cientifica">
+        <h5>Prensa científica</h5>
+        <ul class="list">
+            <li v-for="item, item_index in items_de_prensa_cientifica" v-bind:key="'item-' + item_index">
+                <button class="list_item" v-on:click="() => abrir_enlace(item[1])" v-if="item.length === 2">
+                    {{ item[0] }}
+                </button>
+                <button class="list_separator" v-else-if="item.length === 1">
+                    {{ item[0] }}
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="lista_de_redes_sociales" v-if="esta_mostrando_redes_sociales">
+        <h5>Redes sociales</h5>
+        <ul class="list">
+            <li v-for="item, item_index in items_de_redes_sociales" v-bind:key="'item-' + item_index">
+                <button class="list_item" v-on:click="() => abrir_enlace(item[1])" v-if="item.length === 2">
+                    {{ item[0] }}
+                </button>
+                <button class="list_separator" v-else-if="item.length === 1">
+                    {{ item[0] }}
+                </button>
+            </li>
+        </ul>
+    </div>
+  </div>
+} con lógica {
+    retorno {
+        método data donde {
+            retorno {
+                window: window,
+                esta_mostrando_redes_sociales: false,
+                esta_mostrando_prensa: false,
+                esta_mostrando_prensa_cientifica: false,
+                items_de_redes_sociales: [
+                    ["Cuanto cabrón", "https://www.cuantocabron.com/"],
+                    ["Corona Viral", "https://www.coronaviral.es/?mref=6"],
+                    ["Asco De Vida", "https://www.ascodevida.com/"],
+                    ["Cuanta Razón", "https://www.cuantarazon.com/"],
+                    ["Visto en las redes", "https://www.vistoenlasredes.com/"],
+                    ["Así va España", "https://www.asivaespana.com/?mref=6"],
+                    ["Vrutal", "https://www.vrutal.com/"],
+                    ["Cribeo", "https://www.lavanguardia.com/cribeo"],
+                    ["Urbanian", "https://urbanian.mundodeportivo.com/"],
+                    ["Humor en serie", "https://www.humorenserie.com/"],
+                    ["Cuanta fauna", "https://www.cuantafauna.com/"],
+                    ["No tengo tele", "https://www.notengotele.com/"],
+                    ["Vaya GIF", "https://www.vayagif.com/"],
+                    ["Tenía que decirlo", "https://www.teniaquedecirlo.com/"],
+                    ["Ahorrador o rata", "https://www.ahorradororata.com/"],
+                    ["Viralízalo", "https://www.viralizalo.com/"],
+                    ["Meme Deportes", "https://www.memedeportes.com/"],
+                    ["Quora.es", "https://es.quora.com/"],
+                    ["Quora.com", "https://www.quora.com/"]
+                ],
+                items_de_prensa_cientifica: [
+                    ["ABC | Ciencia", "https://www.abc.es/ciencia/"],
+                    ["ABC | Tecnología", "https://www.abc.es/tecnologia/"],
+                    ["Quo", "https://quo.eldiario.es/"],
+                    ["Muy Interesante", "https://www.muyinteresante.es/"],
+                    ["National Geographic", "https://www.nationalgeographic.es/"],
+                    ["National Geographic | Ciencia", "https://www.nationalgeographic.es/ciencia"]
+                ],
+                items_de_prensa: [
+                    ["España"],
+                    ["El País", "https://elpais.com"],
+                    ["El Mundo", "https://elmundo.es"],
+                    ["La Razón", "https://larazon.es"],
+                    ["ABC.es", "https://www.abc.es/"],
+                    ["La Vanguardia", "https://www.lavanguardia.com/"],
+                    ["El Diario.es", "https://www.eldiario.es/"],
+                    ["20 minutos", "https://www.20minutos.es/"],
+                    ["Kiosko.net", "https://es.kiosko.net/es/"],
+                    ["Cataluña"],
+                    ["El Punt Avui", "https://www.elpuntavui.cat/"],
+                    ["Regió7", "https://www.regio7.cat/"],
+                    ["Diari de Tarragona", "https://www.diaridetarragona.com/"],
+                    ["Ara.cat", "https://www.ara.cat/"],
+                    ["20 minutos Cataluña", "https://www.20minutos.es/cataluna/"],
+                    ["Árabes"],
+                    ["Al Jazeera", "https://www.aljazeera.com/"],
+                    ["China"],
+                    ["China Daily", "http://www.chinadaily.com.cn/"],
+                    ["Global Times China", "https://www.globaltimes.cn/"],
+                    ["India"],
+                    ["The Times of India", "https://timesofindia.indiatimes.com/"],
+                    ["The Indian Express", "https://indianexpress.com/"],
+                    ["Hindustan Times", "https://www.hindustantimes.com/"],
+                    ["India Today", "https://www.indiatoday.in/"],
+                    ["Rusia"],
+                    ["Sputnik News", "https://sputniknews.lat/"],
+                    ["Argentina"],
+                    ["La Nación Argentina", "https://www.lanacion.com.ar/"],
+                    ["Clarín", "https://www.clarin.com/"],
+                    ["Página12", "https://www.pagina12.com.ar/"],
+                    ["Perfil", "https://www.perfil.com/"]
+                ]
+            }.
+        }.
+        propiedad methods como {
+            método abrir_enlace con (link) donde {
+                hago window.open(link, "__blank").
+            }.
+        }.
+    }.
+}.
+
+creo App como una aplicación vue2 con nombre "App" con rutas [{
+    propiedad path como "/".
+    propiedad name como "Home".
+    propiedad component como PaginaDeInicio.
+    propiedad props como {}.
+}] con traducciones {
+    propiedad es como {}.
+    propiedad en como {}.
+    propiedad ca como {}.
+} con plantilla {
+  <div class="App Component Castelog-app">
+    <router-view></router-view>
+  </div>
+} con estilos {
+    html {}
+    body {}
+    .Component {}
+    .App {}
+} con lógica {
+  retorno {
+    método data donde {
+      retorno {
+        
+      }.
+    }.
+    propiedad methods como {}.
+    propiedad watch como {}.
+    método beforeMount donde {}.
+    método mounted donde {}.
+  }.
+} montada en "#app".

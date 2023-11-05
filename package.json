@@ -1,0 +1,13 @@
+{
+  "name": "app-de-inicio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx http-server -c-1 docs -o index.1.html",
+    "build": "cp docs/index.1.html docs/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
