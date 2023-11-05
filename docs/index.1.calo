@@ -137,9 +137,9 @@ creo PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plan
         método data donde {
             retorno {
                 window: window,
-                esta_mostrando_redes_sociales: false,
-                esta_mostrando_prensa: false,
-                esta_mostrando_prensa_cientifica: false,
+                esta_mostrando_redes_sociales: true,
+                esta_mostrando_prensa: true,
+                esta_mostrando_prensa_cientifica: true,
                 items_de_redes_sociales: [
                     ["Cuanto cabrón", "https://www.cuantocabron.com/"],
                     ["Corona Viral", "https://www.coronaviral.es/?mref=6"],
